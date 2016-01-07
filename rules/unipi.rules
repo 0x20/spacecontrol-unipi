@@ -1,0 +1,8 @@
+rule
+	"start system"
+when
+	 System started
+then
+	callScript("gpio-pull-up.sh")
+//	executeCommandLine("/etc/openhab/configurations");
+end
