@@ -3,6 +3,5 @@ rule
 when
 	 System started
 then
-//	callScript("gpio-pull-up.sh")
 	executeCommandLine("/etc/openhab/configurations/gpio-pull-up.sh")
 end
