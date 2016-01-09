@@ -1,7 +1,22 @@
+// == gpio pull-ups ============================================================================
+
 rule
 	"start system"
 when
 	 System started
 then
 	executeCommandLine("/etc/openhab/configurations/gpio-pull-up.sh")
+end
+
+// == Lighting =================================================================================
+
+rule "Front lighting"
+when
+	Item TopLightSwitch changed
+then
+	if (FrontLights.state==ON) {
+		FrontLights.sendCommand(OFF)
+	} else if (FrontLights.state==OFF) {
+		FrontLights.sendCommand(ON)
+	}
 end
