@@ -35,3 +35,12 @@ then
 		BackLight.sendCommand(ON)
 	}
 end
+
+rule "All Off"
+when
+	Item AllOffButton changed
+then
+	BackLight.sendCommand(OFF)
+	FrontLight.sendCommand(OFF)
+end
+	
