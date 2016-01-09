@@ -12,11 +12,26 @@ end
 
 rule "Front lighting"
 when
-	Item TopLightSwitch changed
+	Item TopLightSwitch received update
 then
-	if (FrontLights.state==ON) {
-		FrontLights.sendCommand(OFF)
-	} else if (FrontLights.state==OFF) {
-		FrontLights.sendCommand(ON)
+	if (FrontLight.state==ON) {
+		FrontLight.sendCommand(OFF)
+	} else if (FrontLight.state==OFF) {
+		FrontLight.sendCommand(ON)
+	} else { // after reboot states are "Uninitialized"
+		FrontLight.sendCommand(ON)
+	}
+end
+
+rule "Back lighting"
+when
+	Item BackLightSwitch received update
+then
+	if (BackLight.state==ON) {
+		BackLight.sendCommand(OFF)
+	} else if (FrontLight.state==OFF) {
+		BackLight.sendCommand(ON)
+	} else { // after reboot states are "Uninitialized"
+		BackLight.sendCommand(ON)
 	}
 end
