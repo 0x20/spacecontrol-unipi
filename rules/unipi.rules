@@ -25,7 +25,7 @@ end
 
 rule "Back lighting"
 when
-	Item BackLightSwitch received update
+	Item BottomLightSwitch received update
 then
 	if (BackLight.state==ON) {
 		BackLight.sendCommand(OFF)
