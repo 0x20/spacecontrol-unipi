@@ -43,11 +43,20 @@ then
 	BackLight.sendCommand(OFF)
 	FrontLight.sendCommand(OFF)
 	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
-//	http://spacecontrol.0x20.be/CMD?Space=OFF
-	createTimer(now.plusSeconds(5000)) [|
+	createTimer(now.plusSeconds(300)) [|
   		PowerCeiling.sendCommand(OFF)
-//  		Door.setState(CLOSED)
+  		PowerWall.sendCommand(OFF)
 	]
-//PowerCeiling
 end
-	
+
+// == Door =====================================================================================
+		
+rule "Open Door from rest API"
+when
+	Item Door received update ON
+then
+	DoorRelay.sendCommand(ON)
+	createTimer(now.plusSeconds(5)) [|
+  		DoorRelay.sendCommand(OFF)
+	]	
+end
