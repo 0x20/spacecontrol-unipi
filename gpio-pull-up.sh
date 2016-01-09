@@ -1,0 +1,12 @@
+gpio -g mode 4 up
+gpio -g mode 17 up
+gpio -g mode 27 up
+gpio -g mode 23 up
+gpio -g mode 22 up
+gpio -g mode 24 up
+gpio -g mode 11 up
+gpio -g mode 7 up
+gpio -g mode 8 up
+gpio -g mode 9 up
+gpio -g mode 25 up
+gpio -g mode 10 up
