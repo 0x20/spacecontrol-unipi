@@ -42,5 +42,11 @@ when
 then
 	BackLight.sendCommand(OFF)
 	FrontLight.sendCommand(OFF)
+//	http://spacecontrol.0x20.be/CMD?Space=OFF
+	createTimer(now.plusSeconds(20)) [|
+  		PowerCeiling.sendCommand(OFF)
+//  		Door.setState(CLOSED)
+	]
+//PowerCeiling
 end
 	
