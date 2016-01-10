@@ -1,1 +1,2 @@
-Switch Door "Door" (AccessControle)
+Switch Door  "Door"  (AccessControle)
+Switch Space "Space" (AccessControle)

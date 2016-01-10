@@ -21,6 +21,11 @@ then
 	} else { // after reboot states are "Uninitialized"
 		FrontLight.sendCommand(ON)
 	}
+	if (Space.state!=ON) {
+		PowerCeiling.sendCommand(ON)
+		PowerWall.sendCommand(ON)
+		Space.send(ON)
+	}
 end
 
 rule "Back lighting"
@@ -34,6 +39,11 @@ then
 	} else { // after reboot states are "Uninitialized"
 		BackLight.sendCommand(ON)
 	}
+	if (Space.state!=ON) {
+		PowerCeiling.sendCommand(ON)
+		PowerWall.sendCommand(ON)
+		Space.send(ON)
+	}
 end
 
 rule "All Off"
@@ -46,17 +56,20 @@ then
 	createTimer(now.plusSeconds(300)) [|
   		PowerCeiling.sendCommand(OFF)
   		PowerWall.sendCommand(OFF)
+  		Space.send(OFF)
 	]
 end
 
 // == Door =====================================================================================
 		
-rule "Open Door from rest API"
-when
-	Item Door received update ON
-then
-	DoorRelay.sendCommand(ON)
-	createTimer(now.plusSeconds(5)) [|
-  		DoorRelay.sendCommand(OFF)
-	]	
-end
+//rule "Open Door from rest API"
+//when
+//	Item Door received update ON
+//then
+//	DoorRelay.sendCommand(ON)
+//	createTimer(now.plusSeconds(5)) [|
+//  		DoorRelay.sendCommand(OFF)
+//	]	
+//end
+
+
