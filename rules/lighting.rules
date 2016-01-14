@@ -55,10 +55,10 @@ then
 	BackLight.sendCommand(OFF)
 	FrontLight.sendCommand(OFF)
 	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
+	Space.send(OFF)
 	timer = createTimer(now.plusSeconds(300)) [|
   		PowerCeiling.sendCommand(OFF)
   		PowerWall.sendCommand(OFF)
-  		Space.send(OFF)
 	]
 end
 
