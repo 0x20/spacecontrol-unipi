@@ -24,7 +24,7 @@ when
 then
 	if (BackLight.state==ON) {
 		BackLight.sendCommand(OFF)
-	} else if (FrontLight.state==OFF) {
+	} else if (BackLight.state==OFF) {
 		BackLight.sendCommand(ON)
 	} else { // after reboot states are "Uninitialized"
 		BackLight.sendCommand(ON)
