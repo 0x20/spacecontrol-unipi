@@ -59,8 +59,6 @@ then
   		PowerCeiling.sendCommand(OFF)
   		PowerWall.sendCommand(OFF)
   		Space.send(OFF)
-  		timer.cancel
-        timer = null
 	]
 end
 
