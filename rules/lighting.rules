@@ -1,3 +1,7 @@
+ import org.openhab.model.script.actions.Timer
+  
+ var Timer timer = null
+
 // == Lighting =================================================================================
 
 rule "Front lighting"
@@ -12,9 +16,13 @@ then
 		FrontLight.sendCommand(ON)
 	}
 	if (Space.state!=ON) {
+		if(timer!=null) {
+        	timer.cancel
+            timer = null
+        }
+		Space.send(ON)
 		PowerCeiling.sendCommand(ON)
 		PowerWall.sendCommand(ON)
-		Space.send(ON)
 	}
 end
 
@@ -30,9 +38,13 @@ then
 		BackLight.sendCommand(ON)
 	}
 	if (Space.state!=ON) {
+		if(timer!=null) {
+        	timer.cancel
+            timer = null
+        }
+		Space.send(ON)
 		PowerCeiling.sendCommand(ON)
 		PowerWall.sendCommand(ON)
-		Space.send(ON)
 	}
 end
 
@@ -43,10 +55,12 @@ then
 	BackLight.sendCommand(OFF)
 	FrontLight.sendCommand(OFF)
 	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
-	createTimer(now.plusSeconds(300)) [|
+	timer = createTimer(now.plusSeconds(300)) [|
   		PowerCeiling.sendCommand(OFF)
   		PowerWall.sendCommand(OFF)
   		Space.send(OFF)
+  		timer.cancel
+        timer = null
 	]
 end
 
