@@ -39,7 +39,7 @@ Contact I12     "Digital Input 12"    	(DigitalInputs) { gpio="pin:10" }
 //Switch  Relay7  "Relay 7"       (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=0'" }
 //Switch  Relay8  "Relay 8"       (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=0'" }
 //
-//Contact	I01		"Digital Input 1"		(DigitalInputs)	{ gpio="pin:4" }
+//Contact I01     "Digital Input 1"       (DigitalInputs)	{ gpio="pin:4" }
 //Contact I02     "Digital Input 2"       (DigitalInputs) { gpio="pin:17" }
 //Contact I03     "Digital Input 3"       (DigitalInputs) { gpio="pin:27" }
 //Contact I04     "Digital Input 4"       (DigitalInputs) { gpio="pin:23" }
@@ -50,4 +50,4 @@ Contact I12     "Digital Input 12"    	(DigitalInputs) { gpio="pin:10" }
 //Contact I09     "Digital Input 9"       (DigitalInputs) { gpio="pin:8" }
 //Contact I10     "Digital Input 10"      (DigitalInputs) { gpio="pin:9" }
 //Contact I11     "Digital Input 11"      (DigitalInputs) { gpio="pin:25" }
-//Contact I12     "Digital Input 12"    	(DigitalInputs) { gpio="pin:10" }
+//Contact I12     "Digital Input 12"      (DigitalInputs) { gpio="pin:10" }
