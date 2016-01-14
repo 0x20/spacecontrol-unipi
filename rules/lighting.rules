@@ -1,13 +1,3 @@
-// == gpio pull-ups ============================================================================
-
-rule
-	"start system"
-when
-	 System started
-then
-	executeCommandLine("/etc/openhab/configurations/gpio-pull-up.sh")
-end
-
 // == Lighting =================================================================================
 
 rule "Front lighting"

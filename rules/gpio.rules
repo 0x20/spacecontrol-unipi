@@ -1,0 +1,11 @@
+// == gpio pull-ups ============================================================================
+
+rule
+	"start system"
+when
+	 System started
+then
+	executeCommandLine("chmod +x /etc/openhab/configurations/gpio-pull-up.sh")
+	executeCommandLine("/etc/openhab/configurations/gpio-pull-up.sh")
+end
+
