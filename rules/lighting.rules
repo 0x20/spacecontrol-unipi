@@ -13,6 +13,8 @@ then
 		FrontLight.sendCommand(OFF)
 	} else if (FrontLight.state==OFF) {
 		FrontLight.sendCommand(ON)
+	} else { // after reboot states are "Uninitialized"
+		FrontLight.sendCommand(ON)
 	}
 	if (Space.state!=ON) {
 		if(timer!=null) {
