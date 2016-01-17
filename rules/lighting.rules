@@ -1,77 +1,77 @@
- import org.openhab.model.script.actions.Timer
-  
- var Timer timer = null
-
-// == Lighting =================================================================================
-
-rule "Front lighting"
-when
-	Item TopLightSwitch received update
-then
-	if (FrontLight.state==ON) {
-		FrontLight.sendCommand(OFF)
-	} else if (FrontLight.state==OFF) {
-		FrontLight.sendCommand(ON)
-	} else { // after reboot states are "Uninitialized"
-		FrontLight.sendCommand(ON)
-	}
-	if (Space.state!=ON) {
-		if(timer!=null) {
-        	timer.cancel
-            timer = null
-        }
-		Space.send(ON)
-		PowerCeiling.sendCommand(ON)
-		PowerWall.sendCommand(ON)
-	}
-end
-
-rule "Back lighting"
-when
-	Item BottomLightSwitch received update
-then
-	if (BackLight.state==ON) {
-		BackLight.sendCommand(OFF)
-	} else if (BackLight.state==OFF) {
-		BackLight.sendCommand(ON)
-	} else { // after reboot states are "Uninitialized"
-		BackLight.sendCommand(ON)
-	}
-	if (Space.state!=ON) {
-		if(timer!=null) {
-        	timer.cancel
-            timer = null
-        }
-		Space.send(ON)
-		PowerCeiling.sendCommand(ON)
-		PowerWall.sendCommand(ON)
-	}
-end
-
-rule "All Off"
-when
-	Item AllOffButton changed
-then
-	BackLight.sendCommand(OFF)
-	FrontLight.sendCommand(OFF)
-	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
-	Space.send(OFF)
-	timer = createTimer(now.plusSeconds(300)) [|
-  		PowerCeiling.sendCommand(OFF)
-  		PowerWall.sendCommand(OFF)
-	]
-end
-
-// == Door =====================================================================================
-		
-//rule "Open Door from rest API"
+// import org.openhab.model.script.actions.Timer
+//  
+// var Timer timer = null
+//
+//// == Lighting =================================================================================
+//
+//rule "Front lighting"
 //when
-//	Item Door received update ON
+//	Item TopLightSwitch received update
 //then
-//	DoorRelay.sendCommand(ON)
-//	createTimer(now.plusSeconds(5)) [|
-//  		DoorRelay.sendCommand(OFF)
-//	]	
+//	if (FrontLight.state==ON) {
+//		FrontLight.sendCommand(OFF)
+//	} else if (FrontLight.state==OFF) {
+//		FrontLight.sendCommand(ON)
+//	} else { // after reboot states are "Uninitialized"
+//		FrontLight.sendCommand(ON)
+//	}
+//	if (Space.state!=ON) {
+//		if(timer!=null) {
+//        	timer.cancel
+//            timer = null
+//        }
+//		Space.send(ON)
+//		PowerCeiling.sendCommand(ON)
+//		PowerWall.sendCommand(ON)
+//	}
 //end
-
-
+//
+//rule "Back lighting"
+//when
+//	Item BottomLightSwitch received update
+//then
+//	if (BackLight.state==ON) {
+//		BackLight.sendCommand(OFF)
+//	} else if (BackLight.state==OFF) {
+//		BackLight.sendCommand(ON)
+//	} else { // after reboot states are "Uninitialized"
+//		BackLight.sendCommand(ON)
+//	}
+//	if (Space.state!=ON) {
+//		if(timer!=null) {
+//        	timer.cancel
+//            timer = null
+//        }
+//		Space.send(ON)
+//		PowerCeiling.sendCommand(ON)
+//		PowerWall.sendCommand(ON)
+//	}
+//end
+//
+//rule "All Off"
+//when
+//	Item AllOffButton changed
+//then
+//	BackLight.sendCommand(OFF)
+//	FrontLight.sendCommand(OFF)
+//	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
+//	Space.send(OFF)
+//	timer = createTimer(now.plusSeconds(300)) [|
+//  		PowerCeiling.sendCommand(OFF)
+//  		PowerWall.sendCommand(OFF)
+//	]
+//end
+//
+//// == Door =====================================================================================
+//		
+////rule "Open Door from rest API"
+////when
+////	Item Door received update ON
+////then
+////	DoorRelay.sendCommand(ON)
+////	createTimer(now.plusSeconds(5)) [|
+////  		DoorRelay.sendCommand(OFF)
+////	]	
+////end
+//
+//
