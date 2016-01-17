@@ -6,13 +6,12 @@
 
 rule "Front lighting"
 when
-	Item TopLightSwitch received update
+	Item TopLightSwitch received command OPEN or
+	Item TopLightSwitch received command CLOSED
 then
 	if (FrontLight.state==ON) {
 		FrontLight.sendCommand(OFF)
 	} else if (FrontLight.state==OFF) {
-		FrontLight.sendCommand(ON)
-	} else { // after reboot states are "Uninitialized"
 		FrontLight.sendCommand(ON)
 	}
 	if (Space.state!=ON) {
@@ -28,7 +27,8 @@ end
 
 rule "Back lighting"
 when
-	Item BottomLightSwitch received update
+	Item BottomLightSwitch received command OPEN or
+	Item BottomLightSwitch received command CLOSED
 then
 	if (BackLight.state==ON) {
 		BackLight.sendCommand(OFF)
