@@ -8,12 +8,12 @@ rule "Front lighting"
 when
 	Item TopLightSwitch received update
 then
-	if (DebugFrontLight.state==ON) {
-		DebugFrontLight.sendCommand(OFF)
-	} else if (DebugFrontLight.state==OFF) {
-		DebugFrontLight.sendCommand(ON)
+	if (FrontLight.state==ON) {
+		FrontLight.sendCommand(OFF)
+	} else if (FrontLight.state==OFF) {
+		FrontLight.sendCommand(ON)
 	} else { // after reboot states are "Uninitialized"
-		DebugFrontLight.sendCommand(ON)
+		FrontLight.sendCommand(ON)
 	}
 	if (Space.state!=ON) {
 		if(timer!=null) {
@@ -21,8 +21,8 @@ then
             timer = null
         }
 		Space.send(ON)
-		DebugPowerCeiling.sendCommand(ON)
-		DebugPowerWall.sendCommand(ON)
+		PowerCeiling.sendCommand(ON)
+		PowerWall.sendCommand(ON)
 	}
 end
 
@@ -30,12 +30,12 @@ rule "Back lighting"
 when
 	Item BottomLightSwitch received update
 then
-	if (DebugBackLight.state==ON) {
-		DebugBackLight.sendCommand(OFF)
-	} else if (DebugBackLight.state==OFF) {
-		DebugBackLight.sendCommand(ON)
+	if (BackLight.state==ON) {
+		BackLight.sendCommand(OFF)
+	} else if (BackLight.state==OFF) {
+		BackLight.sendCommand(ON)
 	} else { // after reboot states are "Uninitialized"
-		DebugBackLight.sendCommand(ON)
+		BackLight.sendCommand(ON)
 	}
 	if (Space.state!=ON) {
 		if(timer!=null) {
@@ -43,8 +43,8 @@ then
             timer = null
         }
 		Space.send(ON)
-		DebugPowerCeiling.sendCommand(ON)
-		DebugPowerWall.sendCommand(ON)
+		PowerCeiling.sendCommand(ON)
+		PowerWall.sendCommand(ON)
 	}
 end
 
@@ -52,13 +52,13 @@ rule "All Off"
 when
 	Item AllOffButton changed
 then
-	DebugBackLight.sendCommand(OFF)
-	DebugFrontLight.sendCommand(OFF)
-//	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
+	BackLight.sendCommand(OFF)
+	FrontLight.sendCommand(OFF)
+	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
 	Space.send(OFF)
 	timer = createTimer(now.plusSeconds(300)) [|
-  		DebugPowerCeiling.sendCommand(OFF)
-  		DebugPowerWall.sendCommand(OFF)
+  		PowerCeiling.sendCommand(OFF)
+  		PowerWall.sendCommand(OFF)
 	]
 end
 

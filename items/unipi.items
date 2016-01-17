@@ -17,7 +17,7 @@ Switch  ao5     "Analog Out 5V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin
 String	analog	"Analog Out variable"	(AnalogOut)	{ exec="*:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=%2$s'" }
 
 Contact	BottomLightSwitch     "Front Room Bottom Light Switch"     (DigitalInputs) { gpio="pin:4" }
-Contact TopLightSwitch        "Front Room Top Light Switch"        (DigitalInputs) { gpio="pin:17" }
+Contact TopLightSwitch        "Front Room Top Light Switch"        (DigitalInputs) { gpio="pin:17 debounce:200" }
 Contact AllOffButton          "All Off Button"                     (DigitalInputs) { gpio="pin:27" }
 Contact RoofUpSwitch          "Front Room Roof Up"                 (DigitalInputs) { gpio="pin:23" }
 Contact RoofDownSwitch        "Front Room Roof Down"               (DigitalInputs) { gpio="pin:22" }
