@@ -6,8 +6,8 @@
 
 rule "Front lighting"
 when
-	Item TopLightSwitch received command OPEN or
-	Item TopLightSwitch received command CLOSED
+	Item TopLightSwitch received update OPEN or
+	Item TopLightSwitch received update CLOSED
 then
 	if (FrontLight.state==ON) {
 		FrontLight.sendCommand(OFF)
@@ -27,8 +27,8 @@ end
 
 rule "Back lighting"
 when
-	Item BottomLightSwitch received command OPEN or
-	Item BottomLightSwitch received command CLOSED
+	Item BottomLightSwitch received update OPEN or
+	Item BottomLightSwitch received update CLOSED
 then
 	if (BackLight.state==ON) {
 		BackLight.sendCommand(OFF)
