@@ -1,5 +1,6 @@
 Switch Door  "Door"  (AccessControle)
 Switch Space "Space" (AccessControle)
+Switch Abort "Abort" (AccessControle)
 
 
 Switch DebugBottomLightSwitch     "Front Room Bottom Light Switch"
