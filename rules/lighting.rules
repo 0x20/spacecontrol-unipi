@@ -13,6 +13,8 @@ then
         executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
 	Thread::sleep(6500)
         executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
+	Thread::sleep(9000)
+// wait in total 22sec definatly longer then the 20 sec countdown 
 	if (Abort.state == OFF) {
 		FrontLight.sendCommand(OFF)
 	}
