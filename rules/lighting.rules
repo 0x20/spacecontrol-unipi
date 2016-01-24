@@ -6,11 +6,16 @@ rule "Tests"
 when 
 	Item TestAllOff changed from OFF to ON
 then
+	Abort.send(OFF)
 	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
+        executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/SC_poweroff.sh'")
 	Thread::sleep(6500)
         executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
 	Thread::sleep(6500)
         executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
+	if (Abort.state == OFF) {
+		FrontLight.sendCommand(OFF)
+	}
 end
 
 // == Lighting =================================================================================
