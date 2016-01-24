@@ -7,9 +7,9 @@ when
 	Item TestAllOff changed from OFF to ON
 then
 	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
-	Thread::sleep(3000)
+	Thread::sleep(5000)
         executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
-	Thread::sleep(3000)
+	Thread::sleep(5000)
         executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 end
 
