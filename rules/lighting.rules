@@ -1,6 +1,13 @@
- import org.openhab.model.script.actions.Timer
+import org.openhab.model.script.actions.Timer
   
- var Timer timer = null
+var Timer timer = null
+
+rule "Tests"
+when 
+	Item TestAllOff changed from OFF to ON
+then
+	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
+end
 
 // == Lighting =================================================================================
 
