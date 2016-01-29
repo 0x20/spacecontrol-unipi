@@ -15,6 +15,9 @@ then
 	if (AbortShutdown.state == OFF) {
 		FrontLight.sendCommand(OFF)
 		BackLight.sendCommand(OFF)
+		// In case a computer is on but not logged in the other script will not shut down the machine 
+		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude 'sudo shutdown -h now'")
+		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid 'sudo shutdown -h now'")
 	} else {
 		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
 		Thread::sleep(3500)
