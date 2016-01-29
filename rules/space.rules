@@ -1,0 +1,28 @@
+rule "Close Space"
+when 
+	Item TestSpace changed from ON to OFF
+then
+	AbortShutdown.send(OFF)
+	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
+    executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+    executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+	Thread::sleep(6500)
+    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
+	Thread::sleep(6500)
+    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
+	Thread::sleep(9000)
+// wait in total 22sec definatly longer then the 20 sec countdown on barmaid/randomdude
+	if (AbortShutdown.state == OFF) {
+		FrontLight.sendCommand(OFF)
+		BackLight.sendCommand(OFF)
+	}
+end
+
+rule "Open Space"
+when
+	Item TestSpace changed from OFF to ON
+then
+	PowerCeiling.sendCommand(ON)
+	PowerWall.sendCommand(ON)
+	AbortShutdown.send(ON)
+end

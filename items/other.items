@@ -1,19 +1,18 @@
 Switch Door  "Door"  (AccessControl)
 Switch Space "Space" (AccessControl)
-Switch Abort "Abort" (AccessControl)
-Switch TestAllOff "Test All Off" (AccessControl)
+Switch AbortShutdown "Abort" (AccessControl)
+Switch TestSpace "Test Space" (AccessControl)
 
-Switch DebugBottomLightSwitch     "Front Room Bottom Light Switch"
-Switch DebugTopLightSwitch        "Front Room Top Light Switch"
-Switch DebugAllOffButton          "All Off Button"
-Switch DebugRoofUpSwitch          "Front Room Roof Up"
-Switch DebugRoofDownSwitch        "Front Room Roof Down"
-
-
-Switch	DebugDoorRelay       "Door Relay"
-Switch  DebugPowerCeiling    "Power Ceiling"
-Switch  DebugFrontLight      "Front Room Front Lights"
-Switch  DebugBackLight       "Front Room Back Lights"
-Switch  DebugPowerWall       "Power Wall"
-Switch  DebugRoofDown        "Roof Down"
-Switch  DebugRoofUp  		"Roof Up"
+//Switch DebugBottomLightSwitch     "Front Room Bottom Light Switch"
+//Switch DebugTopLightSwitch        "Front Room Top Light Switch"
+//Switch DebugAllOffButton          "All Off Button"
+//Switch DebugRoofUpSwitch          "Front Room Roof Up"
+//Switch DebugRoofDownSwitch        "Front Room Roof Down"
+//
+//Switch	DebugDoorRelay       "Door Relay"
+//Switch  DebugPowerCeiling    "Power Ceiling"
+//Switch  DebugFrontLight      "Front Room Front Lights"
+//Switch  DebugBackLight       "Front Room Back Lights"
+//Switch  DebugPowerWall       "Power Wall"
+//Switch  DebugRoofDown        "Roof Down"
+//Switch  DebugRoofUp  		"Roof Up"
