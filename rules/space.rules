@@ -15,6 +15,10 @@ then
 	if (AbortShutdown.state == OFF) {
 		FrontLight.sendCommand(OFF)
 		BackLight.sendCommand(OFF)
+	} else {
+		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
+		Thread::sleep(2000)
+    	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 	}
 end
 
