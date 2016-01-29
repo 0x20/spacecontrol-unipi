@@ -17,7 +17,7 @@ then
 		BackLight.sendCommand(OFF)
 	} else {
 		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
-		Thread::sleep(2000)
+		Thread::sleep(3500)
     	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 	}
 end
