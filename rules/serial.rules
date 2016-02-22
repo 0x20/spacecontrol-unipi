@@ -1,0 +1,20 @@
+rule "Door Bell Rule"
+when
+ 	Item doorBell received update
+then
+
+	var String doorBellString = doorBell.state.toString.trim
+//    var lines = doorBellString.split("\\r?\\n");
+    
+//    if (lines.size > 0) {
+//    	doorBellString = lines.get(0)
+//    }
+
+	if (doorBellString == "OPEN") {
+		if (Space.state == ON) {		
+			sendCommand(doorBell, "YES\n")
+		} else if (Space.state == OFF) {
+			sendCommand(doorBell, "NO\n")
+		}
+	} // provide options for the two other push buttons
+end
