@@ -11,10 +11,13 @@ then
 //    }
 
 	if (doorBellString == "OPEN") {
-		if (Space.state == ON) {		
+		if (space.state == ON) {		
 			sendCommand(doorBell, "YES\n")
-		} else if (Space.state == OFF) {
+		} else if (space.state == OFF) {
 			sendCommand(doorBell, "NO\n")
+		} else {
+			sendCommand(doorBell, "NO\n")
+			space.send(OFF)
 		}
 	} // provide options for the two other push buttons
 end

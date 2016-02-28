@@ -1,12 +1,12 @@
 // Spacecontrol assigned names
-Switch	DoorRelay       "Door Relay"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=0'" }
-Switch  PowerCeiling    "Power Ceiling"               (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/2 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/2 --post-data='value=0'" }
-Switch  FrontLight      "Front Room Front Lights"     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/3 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/3 --post-data='value=0'" }
-Switch  BackLight       "Front Room Back Lights"      (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/4 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/4 --post-data='value=0'" }
-Switch  PowerWall       "Power Wall"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/5 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/5 --post-data='value=0'" }
-Switch  RoofDown        "Roof Down"                   (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/6 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/6 --post-data='value=0'" }
-Switch  RoofUp          "Roof Up"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=0'" }
-Switch  Relay8          "Relay 8"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=0'" }
+Switch	doorRelay       "Door Relay"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=0'" }
+Switch  powerCeiling    "Power Ceiling"               (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/2 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/2 --post-data='value=0'" }
+Switch  frontLight      "Front Room Front Lights"     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/3 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/3 --post-data='value=0'" }
+Switch  backLight       "Front Room Back Lights"      (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/4 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/4 --post-data='value=0'" }
+Switch  powerWall       "Power Wall"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/5 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/5 --post-data='value=0'" }
+Switch  roofDown        "Roof Down"                   (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/6 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/6 --post-data='value=0'" }
+Switch  roofUp          "Roof Up"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=0'" }
+Switch  relay8          "Relay 8"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=0'" }
 
 Switch	ao1		"Analog Out 1V"	(AnalogOut)		{ exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=1'" }
 Switch  ao2     "Analog Out 2V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=2'" }
@@ -16,18 +16,18 @@ Switch  ao5     "Analog Out 5V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin
 
 String	analog	"Analog Out variable"	(AnalogOut)	{ exec="*:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=%2$s'" }
 
-Contact	BottomLightSwitch     "Front Room Bottom Light Switch"     (DigitalInputs) { gpio="pin:4" }
-Contact TopLightSwitch        "Front Room Top Light Switch"        (DigitalInputs) { gpio="pin:17 debounce:200" }
-Contact AllOffButton          "All Off Button"                     (DigitalInputs) { gpio="pin:27" }
-Contact RoofUpSwitch          "Front Room Roof Up"                 (DigitalInputs) { gpio="pin:23" }
-Contact RoofDownSwitch        "Front Room Roof Down"               (DigitalInputs) { gpio="pin:22" }
-Contact I06     "Digital Input 6"       (DigitalInputs) { gpio="pin:24" }
-Contact I07     "Digital Input 7"       (DigitalInputs) { gpio="pin:11" }
-Contact I08     "Digital Input 8"       (DigitalInputs) { gpio="pin:7" }
-Contact I09     "Digital Input 9"       (DigitalInputs) { gpio="pin:8" }
-Contact I10     "Digital Input 10"      (DigitalInputs) { gpio="pin:9" }
-Contact I11     "Digital Input 11"      (DigitalInputs) { gpio="pin:25" }
-Contact I12     "Digital Input 12"    	(DigitalInputs) { gpio="pin:10" }
+Contact	bottomLightSwitch     "Front Room Bottom Light Switch"     (DigitalInputs) { gpio="pin:4" }
+Contact topLightSwitch        "Front Room Top Light Switch"        (DigitalInputs) { gpio="pin:17 debounce:200" }
+Contact allOffButton          "All Off Button"                     (DigitalInputs) { gpio="pin:27" }
+Contact roofUpSwitch          "Front Room Roof Up"                 (DigitalInputs) { gpio="pin:23" }
+Contact roofDownSwitch        "Front Room Roof Down"               (DigitalInputs) { gpio="pin:22" }
+Contact i06     "Digital Input 6"       (DigitalInputs) { gpio="pin:24" }
+Contact i07     "Digital Input 7"       (DigitalInputs) { gpio="pin:11" }
+Contact i08     "Digital Input 8"       (DigitalInputs) { gpio="pin:7" }
+Contact i09     "Digital Input 9"       (DigitalInputs) { gpio="pin:8" }
+Contact i10     "Digital Input 10"      (DigitalInputs) { gpio="pin:9" }
+Contact i11     "Digital Input 11"      (DigitalInputs) { gpio="pin:25" }
+Contact i12     "Digital Input 12"    	(DigitalInputs) { gpio="pin:10" }
 
 // Generic UniPi names
 //Switch  Relay1  "Relay 1"       (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=0'" }

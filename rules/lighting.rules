@@ -6,61 +6,66 @@ var Timer timer = null
 
 rule "Front lighting"
 when
-	Item TopLightSwitch received update OPEN or
-	Item TopLightSwitch received update CLOSED
+	Item topLightSwitch received update OPEN or
+	Item topLightSwitch received update CLOSED
 then
-	if (FrontLight.state==ON) {
-		FrontLight.sendCommand(OFF)
-	} else if (FrontLight.state==OFF) {
-		FrontLight.sendCommand(ON)
+	if (frontLight.state==ON) {
+		frontLight.sendCommand(OFF)
+	} else if (frontLight.state==OFF) {
+		frontLight.sendCommand(ON)
 	} else { // after reboot states are "Uninitialized"
-		FrontLight.sendCommand(ON)
+		frontLight.sendCommand(ON)
 	}
-	if (Space.state!=ON) {
+	if (space.state!=ON) {
 		if(timer!=null) {
         	timer.cancel
             timer = null
         }
-		Space.send(ON)
-		PowerCeiling.sendCommand(ON)
-		PowerWall.sendCommand(ON)
+		space.send(ON)
+		powerCeiling.sendCommand(ON)
+		Thread::sleep(50)
+		powerWall.sendCommand(ON)
 	}
 end
 
 rule "Back lighting"
 when
-	Item BottomLightSwitch received update OPEN or
-	Item BottomLightSwitch received update CLOSED
+	Item bottomLightSwitch received update OPEN or
+	Item bottomLightSwitch received update CLOSED
 then
-	if (BackLight.state==ON) {
-		BackLight.sendCommand(OFF)
-	} else if (BackLight.state==OFF) {
-		BackLight.sendCommand(ON)
+	if (backLight.state==ON) {
+		backLight.sendCommand(OFF)
+	} else if (backLight.state==OFF) {
+		backLight.sendCommand(ON)
 	} else { // after reboot states are "Uninitialized"
-		BackLight.sendCommand(ON)
+		backLight.sendCommand(ON)
 	}
-	if (Space.state!=ON) {
+	if (space.state!=ON) {
 		if(timer!=null) {
         	timer.cancel
             timer = null
         }
-		Space.send(ON)
-		PowerCeiling.sendCommand(ON)
-		PowerWall.sendCommand(ON)
+		space.send(ON)
+		powerCeiling.sendCommand(ON)
+		Thread::sleep(50)
+		powerWall.sendCommand(ON)
 	}
 end
 
 rule "All Off"
 when
-	Item AllOffButton changed
+	Item allOffButton received update OPEN or
+	Item allOffButton received update CLOSED
 then
-	BackLight.sendCommand(OFF)
-	FrontLight.sendCommand(OFF)
+	backLight.sendCommand(OFF)
+	Thread::sleep(50)
+	frontLight.sendCommand(OFF)
 	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
-	Space.send(OFF)
-	timer = createTimer(now.plusSeconds(300)) [|
-  		PowerCeiling.sendCommand(OFF)
-  		PowerWall.sendCommand(OFF)
+	space.send(OFF)
+	timer = createTimer(now.plusSeconds(180)) [|
+  		powerCeiling.sendCommand(OFF)
+  		Thread::sleep(50)
+  		powerWall.sendCommand(OFF)
 	]
 end
 

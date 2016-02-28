@@ -1,8 +1,12 @@
+import org.openhab.model.script.actions.Timer
+
+var Timer timer = null
+
 rule "Close Space"
 when 
-	Item TestSpace changed from ON to OFF
+	Item testSpace changed from ON to OFF
 then
-	AbortShutdown.send(OFF)
+	abortShutdown.send(OFF)
 	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
     executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
     executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
@@ -11,13 +15,14 @@ then
 	Thread::sleep(6500)
     executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 	Thread::sleep(9000)
-// wait in total 22sec definatly longer then the 20 sec countdown on barmaid/randomdude
-	if (AbortShutdown.state == OFF) {
-		FrontLight.sendCommand(OFF)
-		BackLight.sendCommand(OFF)
+// wait in total 22sec definitely longer then the 20 sec countdown on barmaid/randomdude
+	if (abortShutdown.state == OFF) {
 		// In case a computer is on but not logged in the other script will not shut down the machine 
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid 'sudo shutdown -h now'")
+		frontLight.sendCommand(OFF)
+		Thread::sleep(50)
+		backLight.sendCommand(OFF)
 	} else {
 		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
 		Thread::sleep(3500)
@@ -29,7 +34,24 @@ rule "Open Space"
 when
 	Item TestSpace changed from OFF to ON
 then
-	PowerCeiling.sendCommand(ON)
-	PowerWall.sendCommand(ON)
-	AbortShutdown.send(ON)
+	abortShutdown.send(ON)
+	powerCeiling.sendCommand(ON)
+	Thread::sleep(50)
+	powerWall.sendCommand(ON)
+end
+
+rule "Close space at 6AM"
+when
+	Time cron "0 0 6"
+then
+	backLight.sendCommand(OFF)
+	Thread::sleep(50)
+	frontLight.sendCommand(OFF)
+	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
+	space.send(OFF)
+	timer = createTimer(now.plusSeconds(180)) [|
+  		powerCeiling.sendCommand(OFF)
+  		Thread::sleep(50)
+  		powerWall.sendCommand(OFF)
+	]
 end
