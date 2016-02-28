@@ -4,7 +4,7 @@ var Timer timer = null
 
 rule "Close Space"
 when 
-	Item Space changed from ON to OFF
+	Item space changed from ON to OFF
 then
 	abortShutdown.send(OFF)
 	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
@@ -32,7 +32,7 @@ end
 
 rule "Open Space"
 when
-	Item Space changed from OFF to ON
+	Item space changed from OFF to ON
 then
 	abortShutdown.send(ON)
 	powerCeiling.sendCommand(ON)
@@ -47,11 +47,11 @@ then
 	backLight.sendCommand(OFF)
 	Thread::sleep(50)
 	frontLight.sendCommand(OFF)
-	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
+//	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
 	space.send(OFF)
 	timer = createTimer(now.plusSeconds(180)) [|
   		powerCeiling.sendCommand(OFF)
-  		Thread::sleep(50)
+//  		Thread::sleep(50)
   		powerWall.sendCommand(OFF)
 	]
 end

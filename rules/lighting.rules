@@ -1,6 +1,6 @@
 import org.openhab.model.script.actions.Timer
   
-var Timer timer = null
+//var Timer timer = null
 
 // == Lighting =================================================================================
 
@@ -22,7 +22,7 @@ then
 //        	timer.cancel
 //            timer = null
 //        }
-	Space.sendCommand(ON)
+	space.sendCommand(ON)
 //		PowerCeiling.sendCommand(ON)
 //		PowerWall.sendCommand(ON)
 //	}
@@ -45,7 +45,7 @@ then
 //        	timer.cancel
 //            timer = null
 //        }
-		Space.sendCommand(ON)
+		space.sendCommand(ON)
 //		PowerCeiling.sendCommand(ON)
 //		PowerWall.sendCommand(ON)
 //	}
@@ -56,7 +56,7 @@ when
 	Item allOffButton received update OPEN or
 	Item allOffButton received update CLOSED
 then
-	Space.sendCommand(OFF)
+	space.sendCommand(OFF)
 //	BackLight.sendCommand(OFF)
 //	FrontLight.sendCommand(OFF)
 //	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
