@@ -20,6 +20,7 @@ then
 		// In case a computer is on but not logged in the other script will not shut down the machine 
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid 'sudo shutdown -h now'")
+		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@flappers 'sudo shutdown -h now'")
 		frontLight.sendCommand(OFF)
 		Thread::sleep(50)
 		backLight.sendCommand(OFF)
