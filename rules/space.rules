@@ -4,7 +4,7 @@ var Timer timer = null
 
 rule "Close Space"
 when 
-	Item testSpace changed from ON to OFF
+	Item Space changed from ON to OFF
 then
 	abortShutdown.send(OFF)
 	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
@@ -32,7 +32,7 @@ end
 
 rule "Open Space"
 when
-	Item TestSpace changed from OFF to ON
+	Item Space changed from OFF to ON
 then
 	abortShutdown.send(ON)
 	powerCeiling.sendCommand(ON)

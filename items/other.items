@@ -2,7 +2,7 @@ Switch door  "Door"  (AccessControl)
 Switch space "Space" (AccessControl)
 Switch abortShutdown "Abort" (AccessControl)
 
-Switch testSpace "Test Space" (AccessControl)
+//Switch testSpace "Test Space" (AccessControl)
 
 //Switch DebugBottomLightSwitch     "Front Room Bottom Light Switch"
 //Switch DebugTopLightSwitch        "Front Room Top Light Switch"

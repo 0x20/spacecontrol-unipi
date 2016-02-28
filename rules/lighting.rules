@@ -16,16 +16,16 @@ then
 	} else { // after reboot states are "Uninitialized"
 		frontLight.sendCommand(ON)
 	}
-	if (space.state!=ON) {
-		if(timer!=null) {
-        	timer.cancel
-            timer = null
-        }
-		space.send(ON)
-		powerCeiling.sendCommand(ON)
-		Thread::sleep(50)
-		powerWall.sendCommand(ON)
-	}
+
+//	if (Space.state!=ON) {
+//		if(timer!=null) {
+//        	timer.cancel
+//            timer = null
+//        }
+	Space.sendCommand(ON)
+//		PowerCeiling.sendCommand(ON)
+//		PowerWall.sendCommand(ON)
+//	}
 end
 
 rule "Back lighting"
@@ -40,16 +40,15 @@ then
 	} else { // after reboot states are "Uninitialized"
 		backLight.sendCommand(ON)
 	}
-	if (space.state!=ON) {
-		if(timer!=null) {
-        	timer.cancel
-            timer = null
-        }
-		space.send(ON)
-		powerCeiling.sendCommand(ON)
-		Thread::sleep(50)
-		powerWall.sendCommand(ON)
-	}
+//	if (Space.state!=ON) {
+//		if(timer!=null) {
+//        	timer.cancel
+//            timer = null
+//        }
+		Space.sendCommand(ON)
+//		PowerCeiling.sendCommand(ON)
+//		PowerWall.sendCommand(ON)
+//	}
 end
 
 rule "All Off"
@@ -57,16 +56,15 @@ when
 	Item allOffButton received update OPEN or
 	Item allOffButton received update CLOSED
 then
-	backLight.sendCommand(OFF)
-	Thread::sleep(50)
-	frontLight.sendCommand(OFF)
-	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
-	space.send(OFF)
-	timer = createTimer(now.plusSeconds(180)) [|
-  		powerCeiling.sendCommand(OFF)
-  		Thread::sleep(50)
-  		powerWall.sendCommand(OFF)
-	]
+	Space.sendCommand(OFF)
+//	BackLight.sendCommand(OFF)
+//	FrontLight.sendCommand(OFF)
+//	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
+//	Space.send(OFF)
+//	timer = createTimer(now.plusSeconds(300)) [|
+//  		PowerCeiling.sendCommand(OFF)
+//  		PowerWall.sendCommand(OFF)
+//	]
 end
 
 // == Door =====================================================================================
