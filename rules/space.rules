@@ -25,10 +25,13 @@ then
 		Thread::sleep(50)
 		backLight.sendCommand(OFF)
 		Thread::sleep(180000)
-		powerWall.sendCommand(OFF)
-		Thread::sleep(50)
-		powerCeiling.sendCommand(OFF)
+		if (abortShutdown.state == OFF) {
+			powerWall.sendCommand(OFF)
+			Thread::sleep(50)
+			powerCeiling.sendCommand(OFF)
+		}
 	} else {
+		space.sendCommand(ON)
 		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
 		Thread::sleep(3500)
     	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
