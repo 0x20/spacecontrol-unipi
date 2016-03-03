@@ -14,16 +14,7 @@ then
 	} else { // after reboot states are "Uninitialized"
 		frontLight.sendCommand(ON)
 	}
-
-//	if (Space.state!=ON) {
-//		if(timer!=null) {
-//        	timer.cancel
-//            timer = null
-//        }
 	space.sendCommand(ON)
-//		PowerCeiling.sendCommand(ON)
-//		PowerWall.sendCommand(ON)
-//	}
 end
 
 rule "Back lighting"
@@ -38,15 +29,7 @@ then
 	} else { // after reboot states are "Uninitialized"
 		backLight.sendCommand(ON)
 	}
-//	if (Space.state!=ON) {
-//		if(timer!=null) {
-//        	timer.cancel
-//            timer = null
-//        }
-		space.sendCommand(ON)
-//		PowerCeiling.sendCommand(ON)
-//		PowerWall.sendCommand(ON)
-//	}
+	space.sendCommand(ON)
 end
 
 rule "All Off"
@@ -55,14 +38,6 @@ when
 	Item allOffButton received update CLOSED
 then
 	space.sendCommand(OFF)
-//	BackLight.sendCommand(OFF)
-//	FrontLight.sendCommand(OFF)
-//	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
-//	Space.send(OFF)
-//	timer = createTimer(now.plusSeconds(300)) [|
-//  		PowerCeiling.sendCommand(OFF)
-//  		PowerWall.sendCommand(OFF)
-//	]
 end
 
 // == Door =====================================================================================
