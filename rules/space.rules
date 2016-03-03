@@ -1,7 +1,5 @@
 import org.openhab.model.script.actions.Timer
 
-var Timer timer = null
-
 rule "Close Space"
 when 
 	Item space changed from ON to OFF
@@ -21,6 +19,7 @@ then
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@flappers 'sudo shutdown -h now'")
+		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@echelon 'sudo shutdown -h now'") // include shutdown attempt through kodi???
 		frontLight.sendCommand(OFF)
 		Thread::sleep(50)
 		backLight.sendCommand(OFF)
@@ -50,16 +49,7 @@ end
 
 rule "Close space at 6AM"
 when
-	Time cron "0 0 6"
+	Time cron "0 0 6 * * *"
 then
-	backLight.sendCommand(OFF)
-	Thread::sleep(50)
-	frontLight.sendCommand(OFF)
-//	sendHttpGetRequest("http://spacecontrol.0x20.be/CMD?Space=OFF")
-	space.send(OFF)
-	timer = createTimer(now.plusSeconds(180)) [|
-  		powerCeiling.sendCommand(OFF)
-//  		Thread::sleep(50)
-  		powerWall.sendCommand(OFF)
-	]
+	space.sendCommand(OFF)
 end
