@@ -1,20 +1,20 @@
 // Spacecontrol assigned names
-Switch	doorRelay       "Door Relay"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=0'" }
-Switch  powerCeiling    "Power Ceiling"               (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/2 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/2 --post-data='value=0'" }
-Switch  frontLight      "Front Room Front Lights"     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/3 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/3 --post-data='value=0'" }
-Switch  backLight       "Front Room Back Lights"      (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/4 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/4 --post-data='value=0'" }
-Switch  powerWall       "Power Wall"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/5 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/5 --post-data='value=0'" }
-Switch  roofDown        "Roof Down"                   (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/6 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/6 --post-data='value=0'" }
-Switch  roofUp          "Roof Up"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=0'" }
-Switch  relay8          "Relay 8"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=0'" }
+Switch	doorRelay       "Door Relay"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/1 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/1 --post-data='value=0'" }
+Switch  powerCeiling    "Power Ceiling"               (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/2 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/2 --post-data='value=0'" }
+Switch  frontLight      "Front Room Front Lights"     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/3 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/3 --post-data='value=0'" }
+Switch  backLight       "Front Room Back Lights"      (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/4 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/4 --post-data='value=0'" }
+Switch  powerWall       "Power Wall"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/5 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/5 --post-data='value=0'" }
+Switch  roofDown        "Roof Down"                   (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/6 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/6 --post-data='value=0'" }
+Switch  roofUp          "Roof Up"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/7 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/7 --post-data='value=0'" }
+Switch  relay8          "Relay 8"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/8 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/relay/8 --post-data='value=0'" }
 
-Switch	ao1		"Analog Out 1V"	(AnalogOut)		{ exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=1'" }
-Switch  ao2     "Analog Out 2V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=2'" }
-Switch  ao3     "Analog Out 3V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=3'" }
-Switch  ao4     "Analog Out 4V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=4'" }
-Switch  ao5     "Analog Out 5V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=5'" }
+Switch	ao1		"Analog Out 1V"	(AnalogOut)		{ exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=1'" }
+Switch  ao2     "Analog Out 2V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=2'" }
+Switch  ao3     "Analog Out 3V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=3'" }
+Switch  ao4     "Analog Out 4V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=4'" }
+Switch  ao5     "Analog Out 5V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=5'" }
 
-String	analog	"Analog Out variable"	(AnalogOut)	{ exec="*:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost/rest/ao/1 --post-data='value=%2$s'" }
+String	analog	"Analog Out variable"	(AnalogOut)	{ exec="*:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=%2$s'" }
 
 Contact	bottomLightSwitch     "Front Room Bottom Light Switch"     (DigitalInputs) { gpio="pin:4" }
 Contact topLightSwitch        "Front Room Top Light Switch"        (DigitalInputs) { gpio="pin:17 debounce:200" }

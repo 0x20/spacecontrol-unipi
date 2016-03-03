@@ -1,6 +1,4 @@
 import org.openhab.model.script.actions.Timer
-  
-//var Timer timer = null
 
 // == Lighting =================================================================================
 
