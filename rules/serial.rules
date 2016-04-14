@@ -29,7 +29,7 @@ end
 
 rule "Update memberbadges"
 when
-	Time cron "10 * * * * ?"
+	Time cron "0 1 * * * ?"
 then
 	if (backLight.state==ON) {
 		backLight.sendCommand(OFF)
