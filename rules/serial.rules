@@ -1,9 +1,14 @@
-rule "Door Bell Rule"
-when
- 	Item doorBell received update
-then
+// JSONPATH($.users[*].badge)
+// $.users[?(@.member=='1')].badge
+// http://groundcontrol.0x20.be/brain/user/all
+// https://github.com/openhab/openhab/wiki/Hardware-FAQ
+//  --> rpi optimalization
 
-	var String doorBellString = doorBell.state.toString.trim
+rule "Doorbell Rule"
+when
+ 	Item doorbell received update
+then
+	var String doorBellString = doorbell.state.toString.trim
 //    var lines = doorBellString.split("\\r?\\n");
     
 //    if (lines.size > 0) {
@@ -12,12 +17,25 @@ then
 
 	if (doorBellString == "OPEN") {
 		if (space.state == ON) {		
-			sendCommand(doorBell, "YES\n")
+			sendCommand(doorbell, "YES\n")
 		} else if (space.state == OFF) {
-			sendCommand(doorBell, "NO\n")
+			sendCommand(doorbell, "NO\n")
 		} else {
-			sendCommand(doorBell, "NO\n")
+			sendCommand(doorbell, "NO\n")
 			space.send(OFF)
 		}
 	} // provide options for the two other push buttons
+end
+
+rule "Update memberbadges"
+when
+	Time cron "10 * * * * ?"
+then
+	if (backLight.state==ON) {
+		backLight.sendCommand(OFF)
+	} else if (backLight.state==OFF) {
+		backLight.sendCommand(ON)
+	} else { // after reboot states are "Uninitialized"
+		backLight.sendCommand(ON)
+	}
 end
