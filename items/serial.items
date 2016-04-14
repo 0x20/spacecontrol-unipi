@@ -1,1 +1,4 @@
-String doorbell	"Doorbell [%s]"    (AccessControl)    { serial="/dev/ttyUSB0@9600" } 
+String doorbell	"Doorbell [%s]"    (AccessControl)    { serial="/dev/ttyUSB0@9600" }
+
+Number  memberNames  "Member names"    (AccessControl) {http="<[http://groundcontrol.0x20.be/brain/user/all:3600000:JSONPATH($.users[?(@.member=='true')].lastname)]"}
+ 
