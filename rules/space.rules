@@ -49,7 +49,7 @@ end
 
 rule "Close space at 6AM"
 when
-	Time cron "0 0 6 * * ?"
+	Time cron "0 6 * * * ?"
 then
 	space.sendCommand(OFF)
 end
