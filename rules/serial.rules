@@ -1,8 +1,11 @@
+// JSONPATH($.users[*].badge)
+// https://github.com/openhab/openhab/wiki/Hardware-FAQ
+//  --> rpi optimalization
+
 rule "Door Bell Rule"
 when
  	Item doorBell received update
 then
-
 	var String doorBellString = doorBell.state.toString.trim
 //    var lines = doorBellString.split("\\r?\\n");
     
