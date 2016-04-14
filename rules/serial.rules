@@ -1,12 +1,13 @@
 // JSONPATH($.users[*].badge)
+// $.users[?(@.member=='1')].badge
 // https://github.com/openhab/openhab/wiki/Hardware-FAQ
 //  --> rpi optimalization
 
-rule "Door Bell Rule"
+rule "Doorbell Rule"
 when
- 	Item doorBell received update
+ 	Item doorbell received update
 then
-	var String doorBellString = doorBell.state.toString.trim
+	var String doorBellString = doorbell.state.toString.trim
 //    var lines = doorBellString.split("\\r?\\n");
     
 //    if (lines.size > 0) {
@@ -15,11 +16,11 @@ then
 
 	if (doorBellString == "OPEN") {
 		if (space.state == ON) {		
-			sendCommand(doorBell, "YES\n")
+			sendCommand(doorbell, "YES\n")
 		} else if (space.state == OFF) {
-			sendCommand(doorBell, "NO\n")
+			sendCommand(doorbell, "NO\n")
 		} else {
-			sendCommand(doorBell, "NO\n")
+			sendCommand(doorbell, "NO\n")
 			space.send(OFF)
 		}
 	} // provide options for the two other push buttons

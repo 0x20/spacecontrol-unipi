@@ -1,1 +1,1 @@
-String doorBell	"Door Bell [%s]"    (AccessControl)    { serial="/dev/ttyUSB0@9600" } 
+String doorbell	"Doorbell [%s]"    (AccessControl)    { serial="/dev/ttyUSB0@9600" } 
