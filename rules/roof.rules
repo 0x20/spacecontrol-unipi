@@ -1,31 +1,19 @@
 rule "Roof Open"
 when
-	Item roofStatus changed from OFF to ON
+	Item roof changed from OFF to ON
 then
 	roofDown.sendCommand(OFF)
 	roofUp.sendCommand(ON)
-//	if (frontLight.state==ON) {
-//		frontLight.sendCommand(OFF)
-//	} else if (frontLight.state==OFF) {
-//		frontLight.sendCommand(ON)
-//	} else { // after reboot states are "Uninitialized"
-//		frontLight.sendCommand(ON)
-//	}
-//	space.sendCommand(ON)
+	Thread::sleep(6500)
+	roofUp.sendCommand(OFF)
 end
 
 rule "Roof Close"
 when
-	Item roofStatus changed from ON to OFF
+	Item roof changed from ON to OFF
 then
 	roofDown.sendCommand(ON)
 	roofUp.sendCommand(OFF)
-//	if (frontLight.state==ON) {
-//		frontLight.sendCommand(OFF)
-//	} else if (frontLight.state==OFF) {
-//		frontLight.sendCommand(ON)
-//	} else { // after reboot states are "Uninitialized"
-//		frontLight.sendCommand(ON)
-//	}
-//	space.sendCommand(ON)
+	Thread::sleep(6500)
+	roofDown.sendCommand(OFF)
 end
