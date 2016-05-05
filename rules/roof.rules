@@ -18,28 +18,28 @@ then
 	roofDown.sendCommand(OFF)
 end
 
-rule "Roof Up By Switch"
-when
-	Item roofUpSwitch received update OPEN or
-	Item roofUpSwitch received update CLOSED
-then
-	if ((roof.state==ON) || (roof.state==OFF)) {
-		roof.sendCommand(ON)
-	} else { // after reboot states are "Uninitialized"
-		roof.sendCommand(OFF)
-		roof.sendCommand(ON)
-	}
-end
-
-rule "Roof Up By Switch"
-when
-	Item roofDownSwitch received update OPEN or
-	Item roofDownSwitch received update CLOSED
-then
-	if ((roof.state==ON) || (roof.state==OFF)) {
-		roof.sendCommand(OFF)
-	} else { // after reboot states are "Uninitialized"
-		roof.sendCommand(ON)
-		roof.sendCommand(OFF)
-	}
-end
+//rule "Roof Up By Switch"
+//when
+//	Item roofUpSwitch received update OPEN or
+//	Item roofUpSwitch received update CLOSED
+//then
+//	if ((roof.state==ON) || (roof.state==OFF)) {
+//		roof.sendCommand(ON)
+//	} else { // after reboot states are "Uninitialized"
+//		roof.sendCommand(OFF)
+//		roof.sendCommand(ON)
+//	}
+//end
+//
+//rule "Roof Up By Switch"
+//when
+//	Item roofDownSwitch received update OPEN or
+//	Item roofDownSwitch received update CLOSED
+//then
+//	if ((roof.state==ON) || (roof.state==OFF)) {
+//		roof.sendCommand(OFF)
+//	} else { // after reboot states are "Uninitialized"
+//		roof.sendCommand(ON)
+//		roof.sendCommand(OFF)
+//	}
+//end
