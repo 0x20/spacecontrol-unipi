@@ -1,9 +1,9 @@
 rule "Roof Open"
 when
-	Item roofStatus changed from OPEN to CLOSED
+	Item roofStatus changed from OFF to ON
 then
-	roofDown.sendCommand(ON)
-	roofUp.sendCommand(OFF)
+	roofDown.sendCommand(OFF)
+	roofUp.sendCommand(ON)
 //	if (frontLight.state==ON) {
 //		frontLight.sendCommand(OFF)
 //	} else if (frontLight.state==OFF) {
@@ -16,10 +16,10 @@ end
 
 rule "Roof Close"
 when
-	Item roofStatus changed from CLOSED to OPEN
+	Item roofStatus changed from ON to OFF
 then
-	roofDown.sendCommand(OFF)
-	roofUp.sendCommand(ON)
+	roofDown.sendCommand(ON)
+	roofUp.sendCommand(OFF)
 //	if (frontLight.state==ON) {
 //		frontLight.sendCommand(OFF)
 //	} else if (frontLight.state==OFF) {
