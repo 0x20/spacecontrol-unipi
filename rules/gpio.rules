@@ -5,7 +5,7 @@ rule
 when
 	 System started
 then
-	executeCommandLine("chmod +x /etc/openhab/configurations/gpio-pull-up.sh")
-	executeCommandLine("/etc/openhab/configurations/gpio-pull-up.sh")
+//	executeCommandLine("chmod +x /etc/openhab/configurations/gpio-pull-up.sh")
+	executeCommandLine("/etc/openhab/configurations/bash-scripts/gpio-pull-up.sh")
 end
 
