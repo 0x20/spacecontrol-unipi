@@ -4,8 +4,8 @@ when
 then
 	roofDown.sendCommand(OFF)
 	roofUp.sendCommand(ON)
-	Thread::sleep(25000)
-	roofUp.sendCommand(OFF)
+//	Thread::sleep(25000)
+//	roofUp.sendCommand(OFF)
 end
 
 rule "Roof Close"
@@ -14,8 +14,8 @@ when
 then
 	roofDown.sendCommand(ON)
 	roofUp.sendCommand(OFF)
-	Thread::sleep(25000)
-	roofDown.sendCommand(OFF)
+//	Thread::sleep(25000)
+//	roofDown.sendCommand(OFF)
 end
 
 //rule "Roof Up By Switch"
