@@ -23,6 +23,8 @@ then
 		frontLight.sendCommand(OFF)
 		Thread::sleep(50)
 		backLight.sendCommand(OFF)
+		Thread::sleep(50)
+		roof.sendCommand(OFF)
 		Thread::sleep(180000)
 		if (abortShutdown.state == OFF) {
 			powerWall.sendCommand(OFF)
