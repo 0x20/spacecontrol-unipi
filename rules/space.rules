@@ -5,6 +5,7 @@ when
 	Item space changed from ON to OFF
 then
 	abortShutdown.send(OFF)
+	sendHttpGetRequest("http://barmaid:8080/CMD?shutdown=ON")
 	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
     executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
     executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
