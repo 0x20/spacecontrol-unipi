@@ -1,4 +1,4 @@
-// Spacecontrol assigned names
+// Spacecontrol assigned names using exec binding
 //Switch	doorRelay       "Door Relay"                  (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/1 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/1 --post-data='value=0'" }
 //Switch  powerCeiling    "Power Ceiling"               (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/2 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/2 --post-data='value=0'" }
 //Switch  frontLight      "Front Room Front Lights"     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/3 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/3 --post-data='value=0'" }
@@ -8,15 +8,15 @@
 //Switch  roofUp          "Roof Up"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/7 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/7 --post-data='value=0'" }
 //Switch  relay8          "Relay 8"                     (Relays)        { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/8 --post-data='value=1' ,OFF:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/relay/8 --post-data='value=0'" }
 
-// Generic UniPi names
-Switch  doorRelay		"Relay 1"       (Relays)        { unipi="relay:1" }
-Switch  powerCeiling	"Relay 2"       (Relays)        { unipi="relay:2" }
-Switch  frontLight		"Relay 3"       (Relays)        { unipi="relay:3" }
-Switch  backLight		"Relay 4"       (Relays)        { unipi="relay:4" }
-Switch  powerWall		"Relay 5"       (Relays)        { unipi="relay:5" }
-Switch  roofDown		"Relay 6"       (Relays)        { unipi="relay:6" }
-Switch  roofUp			"Relay 7"       (Relays)        { unipi="relay:7" }
-Switch  relay8			"Relay 8"       (Relays)        { unipi="relay:8" }
+// Spacecontrol assigned names using unipi binding
+Switch  doorRelay		"Door Relay"				(Relays)        { unipi="relay:1" }
+Switch  powerCeiling	"Power Ceiling"				(Relays)        { unipi="relay:2" }
+Switch  frontLight		"Front Room Front Lights"	(Relays)        { unipi="relay:3" }
+Switch  backLight		"Front Room Back Lights"	(Relays)        { unipi="relay:4" }
+Switch  powerWall		"Power Wall"				(Relays)        { unipi="relay:5" }
+Switch  roofDown		"Roof Down"					(Relays)        { unipi="relay:6" }
+Switch  roofUp			"Roof Up"					(Relays)        { unipi="relay:7" }
+Switch  relay8			"Relay 8"					(Relays)        { unipi="relay:8" }
 
 Switch	ao1		"Analog Out 1V"	(AnalogOut)		{ exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=1'" }
 Switch  ao2     "Analog Out 2V" (AnalogOut)     { exec="ON:/bin/sh@@-c@@/usr/bin/wget -qO- http://localhost:85/rest/ao/1 --post-data='value=2'" }
