@@ -1,0 +1,10 @@
+// Generic UniPi names
+Switch  Relay1  "Relay 1"       (Relays)        { unipi="relay:1" }
+Switch  Relay2  "Relay 2"       (Relays)        { unipi="relay:2" }
+Switch  Relay3  "Relay 3"       (Relays)        { unipi="relay:3" }
+Switch  Relay4  "Relay 4"       (Relays)        { unipi="relay:4" }
+Switch  Relay5  "Relay 5"       (Relays)        { unipi="relay:5" }
+Switch  Relay6  "Relay 6"       (Relays)        { unipi="relay:6" }
+Switch  Relay7  "Relay 7"       (Relays)        { unipi="relay:7" }
+Switch  Relay8  "Relay 8"       (Relays)        { unipi="relay:8" }
+
