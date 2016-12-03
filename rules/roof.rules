@@ -18,7 +18,29 @@ then
 //	roofDown.sendCommand(OFF)
 end
 
+rule "Roof Down"
+when
+	Item roof2 changed to DOWN
+then
+	roofDown.sendCommand(ON)
+	roofUp.sendCommand(OFF)
+end
 
+rule "Roof Up"
+when
+	Item roof2 changed to UP
+then
+	roofDown.sendCommand(OFF)
+	roofUp.sendCommand(ON)
+end		
+
+rule "Roof Stop"
+when
+	Item roof2 changed to STOP
+then
+	roofDown.sendCommand(OFF)
+	roofUp.sendCommand(OFF)
+end
 
 //rule "Roof Up By Switch"
 //when
