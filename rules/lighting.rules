@@ -1,5 +1,6 @@
 //import org.openhab.model.script.actions.Timer
 
+
 // == Lighting =================================================================================
 
 rule "Front lighting"
@@ -47,8 +48,10 @@ when
 	Item door received update ON
 then
 	doorRelay.sendCommand(ON)
+	door.setState(OPEN)
 	createTimer(now.plusSeconds(5)) [|
   		doorRelay.sendCommand(OFF)
+  		door.setState(CLOSED)
 	]	
 end
 
