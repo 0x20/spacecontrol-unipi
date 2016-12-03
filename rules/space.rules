@@ -6,13 +6,16 @@ when
 then
 	abortShutdown.send(OFF)
 	sendHttpGetRequest("http://barmaid:8080/CMD?shutdown=ON")
-	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
+//	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
+	flappers.sendCommand("shut");
     executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
     executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
 	Thread::sleep(6500)
-    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
+	flappers.sendCommand("down")
+//    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
 	Thread::sleep(6500)
-    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
+	flappers.sendCommand("@@@@")
+//    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 	Thread::sleep(9000)
 // wait in total 22sec definitely longer then the 20 sec countdown on barmaid/randomdude
 	if (abortShutdown.state == OFF) {
@@ -34,9 +37,11 @@ then
 		}
 	} else {
 		space.sendCommand(ON)
-		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
+		flappers.sendCommand("ABRT")
+//		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
 		Thread::sleep(3500)
-    	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
+		flappers.sendCommand("@@@@")
+//    	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 	}
 end
 
