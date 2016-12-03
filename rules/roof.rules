@@ -1,26 +1,26 @@
-rule "Roof Open"
-when
-	Item roof changed from OFF to ON
-then
-	roofDown.sendCommand(OFF)
-	roofUp.sendCommand(ON)
-//	Thread::sleep(25000)
-//	roofUp.sendCommand(OFF)
-end
-
-rule "Roof Close"
-when
-	Item roof changed from ON to OFF
-then
-	roofDown.sendCommand(ON)
-	roofUp.sendCommand(OFF)
-//	Thread::sleep(25000)
+//rule "Roof Open"
+//when
+//	Item roof changed from OFF to ON
+//then
 //	roofDown.sendCommand(OFF)
-end
+//	roofUp.sendCommand(ON)
+////	Thread::sleep(25000)
+////	roofUp.sendCommand(OFF)
+//end
+//
+//rule "Roof Close"
+//when
+//	Item roof changed from ON to OFF
+//then
+//	roofDown.sendCommand(ON)
+//	roofUp.sendCommand(OFF)
+////	Thread::sleep(25000)
+////	roofDown.sendCommand(OFF)
+//end
 
 rule "Roof Down"
 when
-	Item roof2 changed to DOWN
+	Item roof changed to DOWN
 then
 	roofDown.sendCommand(ON)
 	roofUp.sendCommand(OFF)
@@ -28,7 +28,7 @@ end
 
 rule "Roof Up"
 when
-	Item roof2 changed to UP
+	Item roof changed to UP
 then
 	roofDown.sendCommand(OFF)
 	roofUp.sendCommand(ON)
@@ -36,7 +36,7 @@ end
 
 rule "Roof Stop"
 when
-	Item roof2 changed to STOP
+	Item roof changed to STOP
 then
 	roofDown.sendCommand(OFF)
 	roofUp.sendCommand(OFF)
