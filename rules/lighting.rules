@@ -1,4 +1,4 @@
-import org.openhab.model.script.actions.Timer
+//import org.openhab.model.script.actions.Timer
 
 // == Lighting =================================================================================
 
@@ -42,14 +42,14 @@ end
 
 // == Door =====================================================================================
 		
-//rule "Open Door from rest API"
-//when
-//	Item Door received update ON
-//then
-//	DoorRelay.sendCommand(ON)
-//	createTimer(now.plusSeconds(5)) [|
-//  		DoorRelay.sendCommand(OFF)
-//	]	
-//end
+rule "Open Door from rest API"
+when
+	Item door received update ON
+then
+	doorRelay.sendCommand(ON)
+	createTimer(now.plusSeconds(5)) [|
+  		doorRelay.sendCommand(OFF)
+	]	
+end
 
 

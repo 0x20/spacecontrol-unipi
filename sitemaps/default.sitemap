@@ -1,4 +1,8 @@
 sitemap demo label="Whitespace" {
+	Frame label="Access Control" {
+		Switch item=door mappings=[ON="Open"] icon="door"
+	}
+	
 	Frame label="Main Room" {
 		Switch item=frontLight mappings=[ON="On", OFF="Off"]
 		Switch item=backLight mappings=[ON="On", OFF="Off"]
