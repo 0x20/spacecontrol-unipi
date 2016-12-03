@@ -1,0 +1,3 @@
+String flappers2 "dsfsd" (tests) { tcp=">[flappers:1337:'REGEX(())']" }
+#Switch flappers "Flappers" (tests) { tcp=">[ON:flappers:1337:'REGEX((.))'], >[OFF:flappers:1337:'REGEX((.))']" }
+#String TcpServer "Tcp server receive: [%s]" (Office_Desk) { tcp="<[127.0.0.1::'REGEX((.))']"}
