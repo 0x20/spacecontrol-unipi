@@ -2,6 +2,6 @@ sitemap demo label="Whitespace" {
 	Frame label="Main Room" {
 		Switch item=frontLight mappings=[ON="On", OFF="Off"]
 		Switch item=backLight mappings=[ON="On", OFF="Off"]
-		Switch item=roof2 mappings=[ON="Up", AUTO="Stop", OFF="Down"]
+		Switch item=roof2 mappings=[UP="Up", STOP="Stop", DOWN="Down"]
 	}	
 }
