@@ -3,6 +3,7 @@ Switch space "Space" (AccessControl)
 Switch abortShutdown "Abort" (AccessControl)
 
 Switch roof	"Roof Status"	(RoofControl)
+String roof2	"Roof Status"	(RoofControl)
 //Switch testSpace "Test Space" (AccessControl)
 
 //Switch DebugBottomLightSwitch     "Front Room Bottom Light Switch"
