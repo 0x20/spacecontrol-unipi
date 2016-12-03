@@ -18,6 +18,8 @@ then
 //	roofDown.sendCommand(OFF)
 end
 
+
+
 //rule "Roof Up By Switch"
 //when
 //	Item roofUpSwitch received update OPEN or
