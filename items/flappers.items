@@ -1,1 +1,2 @@
-String flappers "Flappers" (displays) { tcp=">[flappers:1337:'REGEX(())']" }
+String flappers "[%s]" (displays) { tcp=">[flappers:1337:'REGEX(())']" }
+#String flapper4 "sqdf" (sdf){ tcp=">[flappers:1337:'REGEX((.*))']" }
