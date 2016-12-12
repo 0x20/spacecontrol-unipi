@@ -2,7 +2,6 @@ Switch door  "Door"  (AccessControl)
 Switch space "Space" (AccessControl)
 Switch abortShutdown "Abort" (AccessControl)
 
-//Switch roof	"Roof Status"	(RoofControl)
 String roof	"Roof Status"	(RoofControl)
 //Switch testSpace "Test Space" (AccessControl)
 
