@@ -10,9 +10,9 @@ then
 	flappers.sendCommand("shut");
     executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
 //    executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
-      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-top '/home/shutdown/spacecontrol/poweroff/SC_poweroff.sh'")
-      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-center '/home/shutdown/spacecontrol/poweroff/SC_poweroff.sh'")
-      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-bottom '/home/shutdown/spacecontrol/poweroff/SC_poweroff.sh'")
+      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-top '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-center '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-bottom '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
 	Thread::sleep(6500)
 	flappers.sendCommand("down")
 //    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
