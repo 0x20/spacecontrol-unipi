@@ -6,36 +6,36 @@ when
 then
 	abortShutdown.send(OFF)
 	sendHttpGetRequest("http://barmaid:8080/CMD?shutdown=ON")
-//	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
-	flappers.sendCommand("shut");
-    executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
-//    executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
-      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-top '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
-      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-center '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
-      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-bottom '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh shut")
+//	flappers.sendCommand("shut");
+//      executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+        executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+        executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-top '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+        executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-center '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
+        executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-bottom '/home/shutdownuser/spacecontrol/poweroff/SC_poweroff.sh'")
 	Thread::sleep(6500)
-	flappers.sendCommand("down")
-//    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
+//	flappers.sendCommand("down")
+        executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh down")
 	Thread::sleep(6500)
-	flappers.sendCommand("@@@@")
-//    executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
+//	flappers.sendCommand("@@@@")
+        executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 	Thread::sleep(9000)
 // wait in total 22sec definitely longer then the 20 sec countdown on barmaid/randomdude
 	if (abortShutdown.state == OFF) {
 		// In case a computer is on but not logged in the other script will not shut down the machine 
-		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude 'sudo shutdown -h now'")
+//		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@randomdude 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@barmaid 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@flappers 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-top 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-center 'sudo shutdown -h now'")
 		executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@hsg-barad-dur-bottom 'sudo shutdown -h now'")
-		// executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@echelon 'sudo shutdown -h now'") // include shutdown attempt through kodi???
+//              executeCommandLine("/bin/sh@@-c@@/usr/bin/ssh shutdownuser@echelon 'sudo shutdown -h now'") // include shutdown attempt through kodi???
 		frontLight.sendCommand(OFF)
 		Thread::sleep(50)
 		backLight.sendCommand(OFF)
 		Thread::sleep(50)
-		roof.sendCommand(OFF)
-		Thread::sleep(180000)
+//		roof.sendCommand(OFF)
+		Thread::sleep(120000)
 		if (abortShutdown.state == OFF) {
 			powerWall.sendCommand(OFF)
 			Thread::sleep(50)
@@ -43,11 +43,11 @@ then
 		}
 	} else {
 		space.sendCommand(ON)
-		flappers.sendCommand("ABRT")
-//		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
+//		flappers.sendCommand("ABRT")
+		executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh ABRT")
 		Thread::sleep(3500)
-		flappers.sendCommand("@@@@")
-//    	executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
+//		flappers.sendCommand("@@@@")
+    	        executeCommandLine("/etc/openhab/configurations/bash-scripts/flappers.sh reset")
 	}
 end
 
