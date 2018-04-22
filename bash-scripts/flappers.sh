@@ -2,7 +2,7 @@
 
 if [ "$1" = "reset"  ] 
 then
-	echo @@@@ | nc flappy 1337
+	echo @@@@ | nc -w 5 flappy 1337
 else
-	echo $1 | nc flappy 1337
+	echo $1 | nc -w 5 flappy 1337
 fi
